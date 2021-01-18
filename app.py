@@ -1,6 +1,9 @@
-from flask import Flask, render_template
-
+from flask import Flask, render_template, redirect, url_for
+from forms import GameForm
 app = Flask(__name__)
+
+
+app.config['SECRET_KEY'] = 'fknv678fdvc'
 
 class Game:
     def __init__(self):
@@ -9,40 +12,51 @@ class Game:
 class Player:
     def __init__(self, name):
         self.name = name
-# def make_board():
-#     poles = [0, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4]
-#     return poles
 
-
-# squares = [
-#     {'number': '0', 'amount': '0'},
-#     {'number': '1', 'amount': '4'},
-#     {'number': '2', 'amount': '4'},
-#     {'number': '3', 'amount': '4'},
-#     {'number': '4', 'amount': '4'},
-#     {'number': '5', 'amount': '4'},
-#     {'number': '6', 'amount': '4'},
-#     {'number': '7', 'amount': '0'},
-#     {'number': '8', 'amount': '4'},
-#     {'number': '9', 'amount': '4'},
-#     {'number': '10', 'amount': '4'},
-#     {'number': '11', 'amount': '4'},
-#     {'number': '12', 'amount': '4'},
-#     {'number': '13', 'amount': '4'}
-# ]
 # board = make_board()
 # board = Game()
+@app.route('/pageOne')
+def stronaOne():
+    return render_template('pageOne.html')
+#
+# @app.route('/register', methods=['GET', 'POST'])
+# def register():
+#     form = GameForm()
+#     if form.validate_on_submit():
+#         global playerOn
+#         global playerTw
+#         playerOn = Player(name=form.playerOne.data)
+#         playerTw = Player(name=form.playerTwo.data)
+#         return redirect(url_for('pageGame'))
+#     return render_template('form.html', title='Form', form=form)
 
-@app.route('/pageGame')
+@app.route('/pageGame', methods=['GET', 'POST'])
 def pageGame():
     global board
     board = Game()
+    # nameOne = requests.post('register', 'playerOne')
+    # nameTwo = requests.post('register', 'playerTwo')
+    # print(playerOn.name)
+    # print(playerTw.name)
+    global player1
+    global player2
+    player1 = Player('Ana')
+    player2 = Player('two')
     return render_template('pageGame.html', poles=board.poles)
 
 @app.route('/move/<int:id>')
 def move(id):
     # global board
     # board = pageGame()
+    # polowaOne = []
+    # polowaTwo = []
+    # el = 6
+    # for n in range(8, 13):
+    #     polowaOne.append(board.poles[n])
+    #
+    # for k in range(1, 6):
+    #     polowaTwo.append(board.poles[k])
+    #
     start = id
     ilosc = board.poles[id] #ilosc = 4 id =3
     lastp = (start + ilosc)%14
@@ -66,14 +80,35 @@ def move(id):
             id %= 14
             board.poles[id] += 1
             ilosc -= 1
-
-
+    if ((board.poles[8] == 0) & (board.poles[9] == 0) & (board.poles[10] == 0) & (board.poles[11] == 0) & (board.poles[12] == 0) & (board.poles[13] == 0)):
+        for k in range(1, 6):
+            board.poles[7] += board.poles[k]
+        return redirect(url_for('endGame'))
+    if ((board.poles[1] == 0) & (board.poles[2] == 0) & (board.poles[3] == 0) & (board.poles[4] == 0) & (board.poles[5] == 0) & (board.poles[6] == 0)):
+        for a in range(8, 13):
+            board.poles[0] += board.poles[a]
+        return redirect(url_for('endGame'))
     return render_template('pageGame.html', poles=board.poles)
 
+@app.route('/endgame')
+def endGame():
+    if board.poles[7] > board.poles[0]:
+        print('PlayerTwo wins!')
+    if board.poles[7] < board.poles[0]:
+        print('PlayerOne wins!')
+    if board.poles[7] == board.poles[0]:
+        print('Its a draw!')
+    return render_template('endGame.html')
 
-@app.route('/pageOne')
-def stronaOne():
-    return render_template('pageOne.html')
+
+
+
+
+
+
+
+
+
 
 
 if __name__ == "__main__":

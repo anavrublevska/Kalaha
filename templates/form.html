@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+{% block content %}
+    <div class="content-section">
+    <form method="POST" action="pageGame">
+        {{ form.hidden_tag() }}
+        {{ form.playerOne }}
+        {{ form.playerTwo }}
+        {{ form.submit }}
+{#        <a href="{{ url_for('pageGame') }}">Start a GAME</a>#}
+    </form>
+    </div>
+
+{% endblock content %}
+
+</html>
