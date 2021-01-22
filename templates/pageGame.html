@@ -8,7 +8,7 @@
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
 
-  <link rel="stylesheet" href="../static/css/plansza.css">
+  <link rel="stylesheet" href="../static/css/pla.css">
 
 </head>
 
@@ -19,95 +19,222 @@
   <h4>Gra gracz {{ turn }}</h4>
   <div class="container">
       <div class="home column">
-          <a href="pageGame.html">Dim 0 </a>
-          {{ poles[0] }}
+          {% if (poles[0] > 5) %}
+               <div class="home_many">
+                  {{ poles[0] }}
+               </div>
+           {% else %}
+               <div class="home_{{ poles[0] }}">
+                  {{ poles[0] }}
+               </div>
+           {% endif %}
       </div>
 
+
       <div class="column">
-           <div>
-               {% if ((turn == 0) and (poles[13] != 0)) %}
-                   <a href="/move/13">Move</a>
-               {% endif %}
-               {{ poles[13] }}
-           </div>
-           <div>
-               {% if ((turn == 1) and (poles[1] != 0)) %}
-                   <a href="/move/1">Move</a>
-               {% endif %}
-               {{ poles[1] }}
-           </div>
+           {% if (poles[13] > 5) %}
+               <div class="pole count_many">
+                  {% if ((turn == 0) and (poles[13] != 0)) %}
+                      <a href="/move/13">Move</a>
+                  {% endif %}{{ poles[13] }}
+               </div>
+           {% else %}
+               <div class="pole count_{{ poles[13] }}">
+                  {% if ((turn == 0) and (poles[13] != 0)) %}
+                      <a href="/move/13">Move</a>
+                  {% endif %}{{ poles[13] }}
+               </div>
+           {% endif %}
+
+           {% if (poles[1] > 5) %}
+               <div class="pole count_many">
+                  {% if ((turn == 1) and (poles[1] != 0)) %}
+                      <a href="/move/1">Move</a>
+                  {% endif %}
+                   {{ poles[1] }}
+               </div>
+           {% else %}
+               <div class="pole count_{{ poles[1] }}">
+                  {% if ((turn == 1) and (poles[1] != 0)) %}
+                      <a href="/move/1">Move</a>
+                  {% endif %}
+                   {{ poles[1] }}
+               </div>
+           {% endif %}
+
       </div>
       <div class="column">
-{#           <div class="count_{{ poles[12] }}">#}
-          <div>
-              {% if ((turn == 0) and (poles[12] != 0)) %}
-                   <a href="/move/12">Move</a>
-               {% endif %}
-               {{ poles[12] }}
-           </div>
-           <div>
-               {% if ((turn == 1) and (poles[2] != 0)) %}
-                   <a href="/move/2">Move</a>
-               {% endif %}
-               {{ poles[2] }}</div>
+           {% if (poles[12] > 5) %}
+               <div class="pole count_many">
+                  {% if ((turn == 0) and (poles[12] != 0)) %}
+                      <a href="/move/12">Move</a>
+                  {% endif %}{{ poles[12] }}
+               </div>
+           {% else %}
+               <div class="pole count_{{ poles[12] }}">
+                  {% if ((turn == 0) and (poles[12] != 0)) %}
+                      <a href="/move/12">Move</a>
+                  {% endif %}{{ poles[12] }}
+               </div>
+           {% endif %}
+
+           {% if (poles[2] > 5) %}
+               <div class="pole count_many">
+                  {% if ((turn == 1) and (poles[2] != 0)) %}
+                      <a href="/move/2">Move</a>
+                  {% endif %}
+                   {{ poles[2] }}
+               </div>
+           {% else %}
+               <div class="pole count_{{ poles[2] }}">
+                  {% if ((turn == 1) and (poles[2] != 0)) %}
+                      <a href="/move/2">Move</a>
+                  {% endif %}
+                   {{ poles[2] }}
+               </div>
+           {% endif %}
+
       </div>
       <div class="column">
-           <div>
-               {% if ((turn == 0) and (poles[11] != 0)) %}
-                   <a href="/move/11">Move</a>
-               {% endif %}
-               {{ poles[11] }}
-           </div>
-           <div>
-               {% if ((turn == 1) and (poles[3] != 0)) %}
-                   <a href="/move/3">Move</a>
-               {% endif %}
-               {{ poles[3] }}
-           </div>
+           {% if (poles[11] > 5) %}
+               <div class="pole count_many">
+                  {% if ((turn == 0) and (poles[11] != 0)) %}
+                      <a href="/move/11">Move</a>
+                  {% endif %}{{ poles[11] }}
+               </div>
+           {% else %}
+               <div class="pole count_{{ poles[11] }}">
+                  {% if ((turn == 0) and (poles[11] != 0)) %}
+                      <a href="/move/11">Move</a>
+                  {% endif %}{{ poles[11] }}
+               </div>
+           {% endif %}
+
+           {% if (poles[3] > 5) %}
+               <div class="pole count_many">
+                  {% if ((turn == 1) and (poles[3] != 0)) %}
+                      <a href="/move/3">Move</a>
+                  {% endif %}
+                   {{ poles[3] }}
+               </div>
+           {% else %}
+               <div class="pole count_{{ poles[3] }}">
+                  {% if ((turn == 1) and (poles[3] != 0)) %}
+                      <a href="/move/3">Move</a>
+                  {% endif %}
+                   {{ poles[3] }}
+               </div>
+           {% endif %}
+
       </div>
       <div class="column">
-           <div>
-               {% if ((turn == 0) and (poles[10] != 0)) %}
-                   <a href="/move/10">Move</a>
-               {% endif %}
-               {{ poles[10] }}
-           </div>
-           <div>
-               {% if ((turn == 1) and (poles[4] != 0)) %}
-                   <a href="/move/4">Move</a>
-               {% endif %}
-               {{ poles[4] }}
-           </div>
+           {% if (poles[10] > 5) %}
+               <div class="pole count_many">
+                  {% if ((turn == 0) and (poles[10] != 0)) %}
+                      <a href="/move/10">Move</a>
+                  {% endif %}{{ poles[10] }}
+               </div>
+           {% else %}
+               <div class="pole count_{{ poles[10] }}">
+                  {% if ((turn == 0) and (poles[10] != 0)) %}
+                      <a href="/move/10">Move</a>
+                  {% endif %}{{ poles[10] }}
+               </div>
+           {% endif %}
+
+           {% if (poles[4] > 5) %}
+               <div class="pole count_many">
+                  {% if ((turn == 1) and (poles[4] != 0)) %}
+                      <a href="/move/4">Move</a>
+                  {% endif %}
+                   {{ poles[4] }}
+               </div>
+           {% else %}
+               <div class="pole count_{{ poles[4] }}">
+                  {% if ((turn == 1) and (poles[4] != 0)) %}
+                      <a href="/move/4">Move</a>
+                  {% endif %}
+                   {{ poles[4] }}
+               </div>
+           {% endif %}
+
       </div>
       <div class="column">
-           <div>
-               {% if ((turn == 0) and (poles[9] != 0)) %}
-                   <a href="/move/9">Move</a>
-               {% endif %}
-               {{ poles[9] }}
-           </div>
-           <div>
-               {% if ((turn == 1) and (poles[5] != 0)) %}
-                   <a href="/move/5">Move</a>
-               {% endif %}
-               {{ poles[5] }}
-           </div>
+           {% if (poles[9] > 5) %}
+               <div class="pole count_many">
+                  {% if ((turn == 0) and (poles[9] != 0)) %}
+                      <a href="/move/9">Move</a>
+                  {% endif %}{{ poles[9] }}
+               </div>
+           {% else %}
+               <div class="pole count_{{ poles[9] }}">
+                  {% if ((turn == 0) and (poles[9] != 0)) %}
+                      <a href="/move/9">Move</a>
+                  {% endif %}{{ poles[9] }}
+               </div>
+           {% endif %}
+
+           {% if (poles[5] > 5) %}
+               <div class="pole count_many">
+                  {% if ((turn == 1) and (poles[5] != 0)) %}
+                      <a href="/move/5">Move</a>
+                  {% endif %}
+                   {{ poles[5] }}
+               </div>
+           {% else %}
+               <div class="pole count_{{ poles[5] }}">
+                  {% if ((turn == 1) and (poles[5] != 0)) %}
+                      <a href="/move/5">Move</a>
+                  {% endif %}
+                   {{ poles[5] }}
+               </div>
+           {% endif %}
+
       </div>
       <div class="column">
-           <div>
-               {% if ((turn == 0) and (poles[8] != 0)) %}
-                   <a href="/move/8">Move</a>
-               {% endif %}
-               {{ poles[8] }}
-           </div>
-           <div>
-               {% if ((turn == 1) and (poles[6] != 0)) %}
-                   <a href="/move/6">Move</a>
-               {% endif %}
-               {{ poles[6] }}
-           </div>
+           {% if (poles[8] > 5) %}
+               <div class="pole count_many">
+                  {% if ((turn == 0) and (poles[8] != 0)) %}
+                      <a href="/move/8">Move</a>
+                  {% endif %}{{ poles[8] }}
+               </div>
+           {% else %}
+               <div class="pole count_{{ poles[8] }}">
+                  {% if ((turn == 0) and (poles[8] != 0)) %}
+                      <a href="/move/8">Move</a>
+                  {% endif %}{{ poles[8] }}
+               </div>
+           {% endif %}
+
+           {% if (poles[6] > 5) %}
+               <div class="pole count_many">
+                  {% if ((turn == 1) and (poles[6] != 0)) %}
+                      <a href="/move/6">Move</a>
+                  {% endif %}
+                   {{ poles[6] }}
+               </div>
+           {% else %}
+               <div class="pole count_{{ poles[6] }}">
+                  {% if ((turn == 1) and (poles[6] != 0)) %}
+                      <a href="/move/6">Move</a>
+                  {% endif %}
+                   {{ poles[6] }}
+               </div>
+           {% endif %}
+
       </div>
-      <div class="home">{{ poles[7] }}</div>
+
+      <div class="home column">
+          {% if (poles[7] > 5) %}
+               <div class="home_many">
+                  {{ poles[7] }}
+               </div>
+           {% else %}
+               <div class="home_{{ poles[7] }}">
+                  {{ poles[7] }}
+               </div>
+           {% endif %}
+      </div>
 
 
 {#      {% for square in squares %}#}
