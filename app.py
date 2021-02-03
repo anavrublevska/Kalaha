@@ -170,7 +170,10 @@ def stronaOne():
     return render_template('pageOne.html')
 
 
-#
+@app.route('/rules', methods=['GET', 'POST'])
+def rules():
+    return render_template('instructions.html')
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     global player1
