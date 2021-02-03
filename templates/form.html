@@ -3,19 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    <link rel="stylesheet" href="../static/css/form.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-
+<body>
 {% block content %}
+    <h1 class="name"> KALAHA </h1>
+    <h2 class="tsentr"> Game! </h2>
+    <h3 class="tsentr">Put your names here:</h3>
     <div class="content-section">
     <form method="POST" action="">
         {{ form.hidden_tag() }}
-        {{ form.playerOne }}
-        {{ form.playerTwo }}
-        {{ form.submit }}
+        <div id="icons">
+            <div class="tryby">
+               <label class="pretty">Player 1:</label>
+               {{ form.playerOne(class="form-control")}}
+            </div>
+            <div class="tryby">
+               <label class="pretty">Player 2:</label>
+               {{ form.playerTwo(class="form-control") }}
+
+            </div>
+        </div>
+
+        {{ form.submit(id="knopka")}}
+
 {#        <a href="{{ url_for('pageGame') }}">Start a GAME</a>#}
     </form>
     </div>
 
 {% endblock content %}
 
+</body>
 </html>
